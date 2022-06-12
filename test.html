@@ -1,0 +1,31 @@
+<html>
+<head>
+</head>
+<body>  
+
+<form id="myForm" method="POST">
+   <select name="select" onchange="<?php echo $_SERVER['PHP_SELF'];?>">
+   <option value="N">No</option>
+   <option value="Y">Yes</option>
+   </select>
+   <input type="submit" name="formSubmit" value="Submit" >
+</form>
+
+<?php
+
+if(isset($_POST['formSubmit']) ){
+  $var = $_POST['select'];
+  $query = "SELECT * FROM staffofficer WHERE staffld='E0001";
+  $result = mysql_query($query)
+  or die(mysql_error());
+
+  while($row = mysql_fetch_array($result)){
+    $var2 = $row['staffFname'];
+    echo "First field: " . $var2 . "<br>";
+    }
+}
+?>
+<body>  
+<html>
+
+
